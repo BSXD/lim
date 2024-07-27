@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ขออภัย</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #ffffff;
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+            border-radius: 12px;
+            max-width: 500px;
+            width: 100%;
+            position: relative;
+        }
+
+        .product-image {
+            max-width: 80%;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #ff69b4;
+            font-size: 2em;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .loader {
+            border: 8px solid #f3f3f3; /* Light grey */
+            border-top: 8px solid #ff69b4; /* Pink */
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 0.8s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .button {
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .button:hover {
+            background-color: #ff1493;
+            transform: scale(1.05);
+        }
+
+        .button:active {
+            background-color: #e0007a;
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="loader" class="loader"></div>
+        <div id="content" class="hidden">
+            <img src="images/รูปคู่.jpg" alt="ขออภัย" class="product-image">
+            <h1>ขออภัย! คุณมีสินค้าอยู่แล้ว</h1>
+            <a href="https://youtu.be/YlLOZ5cbUzU?si=lYowCqU-uzZgY5cp" target="_blank" class="button">ติ๋มฟังนี่</a>
+        </div>
+    </div>
+    <script>
+        window.onload = function() {
+            // Simulate loading time
+            setTimeout(function() {
+                document.getElementById('loader').classList.add('hidden');
+                document.getElementById('content').style.display = 'block';
+            }, 800); // 0.8 seconds delay
+        };
+    </script>
+</body>
+</html>

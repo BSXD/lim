@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>รับคุโรมิฟรี!</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #ffffff;
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+            border-radius: 12px;
+            max-width: 500px;
+            width: 100%;
+            opacity: 0; /* Hide the content initially */
+            transition: opacity 0.5s ease-in;
+        }
+
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .spinner {
+            border: 8px solid #f3f3f3; /* Light grey */
+            border-top: 8px solid #ff69b4; /* Pink */
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        h1 {
+            color: #ff69b4;
+            font-size: 2em;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .info-image {
+            max-width: 90%;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1em;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        button:hover {
+            background-color: #ff1493;
+            transform: scale(1.05);
+        }
+
+        button:active {
+            background-color: #e0007a;
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+<body>
+    <div class="loading">
+        <div class="spinner"></div>
+    </div>
+    <div class="container">
+        <img src="path/to/another-image.jpg" alt="สินค้าหมดแล้ว" class="info-image">
+        <h1>น่าเสียดายที่ของที่คุณต้องการหมดแล้ว!</h1>
+        <p>แต่เรามีอีกสินค้าที่ยังเหลือหากท่านต้องการ</p>
+        <button onclick="window.location.href='page3.html'">รับฟรี</button>
+    </div>
+    <script>
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.querySelector('.loading').style.display = 'none';
+                document.querySelector('.container').style.opacity = 1;
+            }, 3000); // 3 seconds
+        });
+    </script>
+</body>
+</html>

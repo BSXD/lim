@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ตรวจสอบสินค้า</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #ffffff;
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+            border-radius: 12px;
+            max-width: 500px;
+            width: 100%;
+            position: relative;
+        }
+
+        .content {
+            display: none; /* Hide content initially */
+        }
+
+        h1 {
+            color: #ff69b4;
+            font-size: 2em;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .product-image {
+            max-width: 90%;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .options {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        button {
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1em;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        button:hover {
+            background-color: #ff1493;
+            transform: scale(1.05);
+        }
+
+        button:active {
+            background-color: #e0007a;
+            transform: scale(0.98);
+        }
+
+        .loader {
+            border: 8px solid #f3f3f3; /* Light grey */
+            border-top: 8px solid #ff69b4; /* Pink */
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .message {
+            color: #ff69b4;
+            font-size: 1.2em;
+            margin-top: 20px;
+            display: none; /* Hide message initially */
+        }
+
+        .progress-container {
+            width: 100%;
+            background-color: #ddd;
+            border-radius: 12px;
+            height: 25px;
+            margin-top: 20px;
+            position: relative;
+            display: none; /* Hide initially */
+        }
+
+        .progress-bar {
+            height: 100%;
+            background-color: #ff69b4;
+            width: 0%;
+            border-radius: 12px;
+            text-align: center;
+            color: white;
+            line-height: 25px;
+            font-weight: bold;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: width 0.5s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="loader" class="loader"></div>
+        <div id="content" class="content">
+            <img src="images/คุโรม๋า.png" alt="สินค้า" class="product-image">
+            <h1>นี่ใช่สินค้าที่คุณต้องการ?</h1>
+            <div class="options">
+                <button id="confirmBtn" onclick="confirmProduct()">ใช่</button>
+                <button id="rejectBtn" onclick="rejectProduct()">ไม่</button>
+            </div>
+            <div id="message" class="message">กำลังส่งสินค้า (ผมรู้บ้านคุณ)</div>
+            <div id="progressContainer" class="progress-container">
+                <div id="progressBar" class="progress-bar">0%</div>
+            </div>
+        </div>
+    </div>
+    <script>
+        window.onload = function() {
+            // Simulate loading time
+            setTimeout(function() {
+                document.getElementById('loader').classList.add('hidden');
+                document.getElementById('content').style.display = 'block';
+            }, 1000); // 1 second delay
+        };
+
+        function confirmProduct() {
+            document.getElementById('message').style.display = 'block';
+            document.getElementById('progressContainer').style.display = 'block';
+
+            let progress = 0;
+            const progressBar = document.getElementById('progressBar');
+            const interval = setInterval(function() {
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    setTimeout(function() {
+                        window.location.href = 'page4.html';
+                    }, 500); // 0.5 second delay after progress is complete
+                } else {
+                    progress++;
+                    progressBar.style.width = progress + '%';
+                    progressBar.textContent = progress + '%';
+                }
+            }, 30); // Update progress every 30ms
+        }
+
+        function rejectProduct() {
+            document.getElementById('rejectBtn').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
